@@ -2,23 +2,26 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const config = require('./_config');
 
 // Define routes
 let index = require('./routes/index');
 let image = require('./routes/image');
 
 // connecting the database
-let mongodb_url = 'mongodb://localhost:27017/';
-let dbName = 'gallery';
-mongoose.connect(`${mongodb_url}${dbName}`,{ useNewUrlParser: true , useUnifiedTopology: true }, (err)=>{
-    if (err) console.log(err)
-});
-
-// test if the database has connected successfully
-let db = mongoose.connection;
-db.once('open', ()=>{
-    console.log('Database connected successfully')
-})
+constMONGODB_URI =
+process.env.MONGODB_URI || config.mongoURI[app.settings.env];
+mongoose.connect(
+MONGODB_URI,
+{ useNewUrlParser:true, useUnifiedTopology:true },
+(err) => {
+if (err) {
+console.log(err);
+} else {
+console.log(`Connected to Database: ${MONGODB_URI}`);
+}
+}
+);
 
 // Initializing the app
 const app = express();
