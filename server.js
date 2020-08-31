@@ -7,9 +7,10 @@ const config = require('./_config');
 // Define routes
 let index = require('./routes/index');
 let image = require('./routes/image');
+const app = express();
 
 // connecting the database
-constMONGODB_URI =
+const MONGODB_URI =
 process.env.MONGODB_URI || config.mongoURI[app.settings.env];
 mongoose.connect(
 MONGODB_URI,
@@ -23,8 +24,6 @@ console.log(`Connected to Database: ${MONGODB_URI}`);
 }
 );
 
-// Initializing the app
-const app = express();
 
 
 // View Engine
