@@ -21,8 +21,8 @@ pipeline {
     //}
     stage('Deploy to Heroku') {
      steps {
-        withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
-             sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/serene-retreat-28928.git master'
+        withCredentials([usernameColonPassword(credentialsId: 'gallery', variable: 'HEROKU_CREDENTIALS' )]){
+             sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/desolate-forest-40208.git master'
          }
         }
     } 
