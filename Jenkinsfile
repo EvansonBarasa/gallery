@@ -1,7 +1,7 @@
 pipeline { 
   agent any
    tools { 
-    gradle "Gradle-6"
+    nodejs "nodejs"
   }
   stages { 
     stage('clone repository') {
@@ -11,14 +11,14 @@ pipeline {
     }
     stage('Build project') {
       steps { 
-        sh 'gradle build'
+        sh 'npm install'
       }
     }
-    //stage('Tests') {
-      //steps { 
-        //sh 'gradle test'
-      //}
-    //}
+    stage('Tests') {
+      steps { 
+        sh 'npm test'
+      }
+    }
     stage('Deploy to Heroku') {
      steps {
         withCredentials([usernameColonPassword(credentialsId: 'gallery', variable: 'HEROKU_CREDENTIALS' )]){
