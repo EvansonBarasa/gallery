@@ -14,11 +14,11 @@ pipeline {
         sh 'gradle build'
       }
     }
-    stage('Tests') {
-      steps { 
-        sh 'gradle test'
-      }
-    }
+    //stage('Tests') {
+      //steps { 
+        //sh 'gradle test'
+      //}
+    //}
     stage('Deploy to Heroku') {
      steps {
         withCredentials([usernameColonPassword(credentialsId: 'gallery', variable: 'HEROKU_CREDENTIALS' )]){
