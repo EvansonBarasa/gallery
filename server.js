@@ -25,7 +25,6 @@ console.log(`Connected to Database: ${MONGODB_URI}`);
 );
 
 
-
 // View Engine
 app.set('view engine', 'ejs');
 
@@ -35,14 +34,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 // body parser middleware
 app.use(express.json())
 
-
 app.use('/', index);
 app.use('/image', image);
 
 
-
- 
 const PORT = process.env.PORT || 5050;
 app.listen(PORT,() =>{
-    console.log(`Server is listening at http://localhost:${PORT}`)
+console.log(`Server is listening at http://localhost:${PORT}`)
 });
+
+
+module.exports=app;
