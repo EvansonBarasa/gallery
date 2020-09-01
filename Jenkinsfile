@@ -27,8 +27,9 @@ pipeline {
         }
     } 
   }
+}
 
-  post {
+post {
         success {
             emailext attachLog: true, 
                 body:
@@ -57,4 +58,3 @@ pipeline {
                 subject: "Status: FAILURE -Job \'${env.JOB_NAME}:${env.BUILD_NUMBER}\'", 
                 to: 'evanzo85@gmail.com'
         }
-}
